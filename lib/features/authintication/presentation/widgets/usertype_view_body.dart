@@ -1,8 +1,10 @@
+import 'package:fakrni/config/routing/app_routes.dart';
 import 'package:fakrni/constants/images.dart';
 import 'package:fakrni/core/styles/app_colors.dart';
 import 'package:fakrni/core/styles/text_styles.dart';
 import 'package:fakrni/core/widgets/button_for_nav.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 enum UserType { parent, student }
 
@@ -156,7 +158,14 @@ class _UsertypeViewBodyState extends State<UsertypeViewBody> {
                 opacity: selectedType != null ? 1 : 0.5,
                 child: IgnorePointer(
                   ignoring: selectedType == null,
-                  child: const ButtonForNav(),
+                  child:  ButtonForNav(
+                    onTap: () {
+                       GoRouter.of(context).push(
+                        selectedType == UserType.parent
+                            ? AppRoutes.signupparent
+                            : AppRoutes.signupchild,);
+                    },
+                  ),
                 ),
               ),
 

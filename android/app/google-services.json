@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "484488690977",
+    "project_id": "fakrni-656da",
+    "storage_bucket": "fakrni-656da.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:484488690977:android:fd49563c0706b79855d260",
+        "android_client_info": {
+          "package_name": "com.example.fakrni"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "484488690977-jkbe3veqm853jf7ipo8i2tdtqgo3brmb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUdJKvjKAdid3pWeaKpQ9KpibyJUqTc7U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "484488690977-jkbe3veqm853jf7ipo8i2tdtqgo3brmb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
