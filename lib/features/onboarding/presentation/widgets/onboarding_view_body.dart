@@ -1,7 +1,10 @@
+import 'package:fakrni/config/routing/app_routes.dart';
 import 'package:fakrni/constants/images.dart';
 import 'package:fakrni/core/styles/app_colors.dart';
 import 'package:fakrni/core/styles/text_styles.dart';
+import 'package:fakrni/core/widgets/button_for_nav.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class OnboardingViewBody extends StatelessWidget {
   const OnboardingViewBody({super.key});
@@ -66,28 +69,11 @@ class OnboardingViewBody extends StatelessWidget {
                           ),
                         ),
                         const Spacer(),
-                        Container(
-                          width: 50,
-                          height: 50,
-                          decoration: BoxDecoration(
-                            
-                              gradient: LinearGradient(
-      colors: [
-        AppColors.mainColor,
-        AppColors.textColor,
-        AppColors.mainColor,
-      ],
-      begin: Alignment.topLeft,
-      end: Alignment.bottomRight,
-    ),
-                            borderRadius: BorderRadius.circular(100),
-                          ),
-                          child: const Icon(
-                            Icons.arrow_back,
-                            color: AppColors.secondColor,
-                            size: 30,
-                          ),
-                        ),
+                        ButtonForNav(onTap: () {
+                          GoRouter.of(context).push(
+                            AppRoutes.usertype,
+                          );
+                        },),
                         const SizedBox(height: 30),
                       ],
                     ),

@@ -1,4 +1,4 @@
-import 'package:fakrni/features/onboarding/presentation/pages/onboarding_view.dart';
+import 'package:fakrni/config/routing/app_routing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'فكرني',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
     GlobalWidgetsLocalizations.delegate,
     GlobalCupertinoLocalizations.delegate,
   ],
-      home: const OnboardingView()
+   routerConfig: AppRouting.router,
     );
   }
 }
