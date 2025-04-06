@@ -21,73 +21,130 @@ class _SignupChildViewBodyState extends State<SignupChildViewBody> {
     return Scaffold(
       backgroundColor: AppColors.secondColor,
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(24.0),
-          child: Column(
-            children: [
-              const SizedBox(height: 20),
-            ArrowBack(),
-              const SizedBox(height: 40),
-              Image.asset(
-                Assets.imagesImageInonboarding,
-                width: 100,
-                height: 100,
+        child: Stack(
+          children: [
+            /// ✅ الدوائر الملونة أسفل يسار الشاشة
+            Positioned(
+              bottom: 0,
+              left: 0,
+              child: SizedBox(
+                width: 120,
+                height: 120,
+                child: Stack(
+                  alignment: Alignment.bottomLeft,
+                  children: [
+                    Positioned(
+                      bottom: -12,
+                      left: -12,
+                      child: CircleAvatar(
+                        radius: 40,
+                        backgroundColor: Color(0xfff0a790),
+                      ),
+                    ),
+                    Positioned(
+                      bottom: -20,
+                      left: 20,
+                      child: CircleAvatar(
+                        radius: 50,
+                        backgroundColor: Color(0xff4c9bb9).withOpacity(0.5),
+                      ),
+                    ),
+                    Positioned(
+                      bottom: 50,
+                      left: -30,
+                      child: CircleAvatar(
+                        radius: 30,
+                        backgroundColor: Colors.tealAccent.shade100.withOpacity(0.5),
+                      ),
+                    ),
+                    Positioned(
+                      bottom: 50,
+                      left: 30,
+                      child: CircleAvatar(
+                        radius: 35,
+                        backgroundColor: Colors.red.withOpacity(0.5),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-              const SizedBox(height: 20),
-              Text(
-             'مرحبًا يا بطل! أدخل اسمك وسنك',
-                 style: TextStyles.fakrnitext.copyWith(fontSize: 20),
-              ),
-              const SizedBox(height: 30),
-              TextformfieldInAuth(hintText: 'اسمك'),
-              const SizedBox(height: 20),
-              TextformfieldInAuth(hintText: 'اسم الاب'),
-              const SizedBox(height: 20),
-
-              /// ✅ Dropdown سليم
-             DropdownButtonFormField<String>(
-  value: selectedAge,
-  decoration: InputDecoration(
-    filled: true,
-    fillColor: AppColors.textColor, // ✅ لون الخلفية
-    contentPadding: const EdgeInsets.symmetric(horizontal: 13, vertical: 12), // ✅ مسافة بين النص والسهم
-    border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(12),
-      borderSide: BorderSide.none,
+            ),
+            /// ✅ المحتوى الرئيسي للفورم
+            Positioned.fill(
+              child: Padding(
+                padding: const EdgeInsets.all(24.0),
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      const SizedBox(height: 20),
+                      const ArrowBack(),
+                      const SizedBox(height: 40),
+                      Image.asset(
+                        Assets.imagesImageInonboarding,
+                        width: 100,
+                        height: 100,
+                      ),
+                      const SizedBox(height: 20),
+                      Text(
+                        'مرحبًا يا بطل! أدخل اسمك وسنك',
+                        style: TextStyles.fakrnitext.copyWith(fontSize: 20),
+                      ),
+                      const SizedBox(height: 30),
+                      const TextformfieldInAuth(hintText: 'اسمك'),
+                      const SizedBox(height: 20),
+                      const TextformfieldInAuth(hintText: 'اسم الاب'),
+                      const SizedBox(height: 20),
+                  
+                     Padding(
+  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+  child: DropdownButtonFormField<String>(
+    value: selectedAge,
+    decoration: InputDecoration(
+      filled: true,
+      fillColor: AppColors.textColor, // ← خلفية الحقل
+      contentPadding: const EdgeInsets.symmetric(horizontal: 13, vertical: 12),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(12),
+        borderSide: BorderSide.none,
+      ),
     ),
-  ),
-  hint: Text(
-    'اختر سنك',
-    style: TextStyles.fakrnitext.copyWith(
+    hint: Text(
+      'اختر سنك',
+      style: TextStyles.fakrnitext.copyWith(
+        fontSize: 16,
+        color: AppColors.secondColor,
+      ),
+    ),
+    dropdownColor: AppColors.textColor, // ← خلفية القائمة المنسدلة
+    style: const TextStyle(
+      color: AppColors.secondColor, // ← لون النص جوه القائمة
       fontSize: 16,
-      color: AppColors.mainColor,
-       // ✅ لون النص في الـ hint
+      fontWeight: FontWeight.w500,
     ),
+    items: ['5', '6', '7', '8'].map((age) {
+      return DropdownMenuItem<String>(
+        value: age,
+        child: Text(age),
+      );
+    }).toList(),
+    onChanged: (value) {
+      setState(() {
+        selectedAge = value;
+      });
+    },
   ),
-  dropdownColor: AppColors.mainColor, // ✅ لون القائمة المنسدلة
-  style: const TextStyle(
-    color: AppColors.textColor, // ✅ لون العناصر داخل القائمة
-    fontSize: 16,
-    fontWeight: FontWeight.w500,
-  ),
-  items: ['5', '6', '7', '8'].map((age) {
-    return DropdownMenuItem<String>(
-      value: age,
-      child: Text(age),
-    );
-  }).toList(),
-  onChanged: (value) {
-    setState(() {
-      selectedAge = value;
-    });
-  },
 ),
 
 
-              const SizedBox(height: 80),
-              ButtonForNav()
-            ],
-          ),
+                  
+                      const SizedBox(height: 50),
+                      const ButtonForNav(),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );

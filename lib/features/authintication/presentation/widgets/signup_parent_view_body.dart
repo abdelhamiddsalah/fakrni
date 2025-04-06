@@ -39,7 +39,7 @@ class SignupParentViewBody extends StatelessWidget {
                       left: 20,
                       child: CircleAvatar(
                         radius: 50,
-                        backgroundColor: Color(0xff4c9bb9),
+                        backgroundColor: Color(0xff4c9bb9).withOpacity(0.5),
                       ),
                     ),
                     Positioned(
@@ -47,14 +47,14 @@ class SignupParentViewBody extends StatelessWidget {
                       left: -30,
                       child: CircleAvatar(
                         radius: 30,
-                        backgroundColor: Colors.tealAccent.shade100,
+                        backgroundColor: Colors.tealAccent.shade100.withOpacity(0.5),
                       ),
                     ),
                     Positioned(
                       bottom: 50,
                       left: 30,
                       child: CircleAvatar(
-                        radius: 30,
+                        radius: 35,
                         backgroundColor: Colors.red.withOpacity(0.5),
                       ),
                     ),
@@ -67,43 +67,45 @@ class SignupParentViewBody extends StatelessWidget {
             Positioned.fill(
               child: Padding(
                 padding: const EdgeInsets.all(24.0),
-                child: Column(
-                  children: [
-                    const SizedBox(height: 20),
-                    const ArrowBack(),
-                    const SizedBox(height: 40),
-                    Image.asset(
-                      Assets.imagesImageInonboarding,
-                      width: 100,
-                      height: 100,
-                    ),
-                    const SizedBox(height: 20),
-                    Text(
-                      'من فضلك أدخل رقم التليفون الخاص بك',
-                      style: TextStyles.fakrnitext.copyWith(fontSize: 20),
-                    ),
-                    const SizedBox(height: 30),
-
-                    Row(
-                      children: [
-                        Expanded(
-                          child: TextformfieldInAuth(
-                            hintText: 'رقم التليفون',
-                            keyboardType: TextInputType.phone,
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      const SizedBox(height: 20),
+                      const ArrowBack(),
+                      const SizedBox(height: 40),
+                      Image.asset(
+                        Assets.imagesImageInonboarding,
+                        width: 100,
+                        height: 100,
+                      ),
+                      const SizedBox(height: 20),
+                      Text(
+                        'من فضلك أدخل رقم التليفون الخاص بك',
+                        style: TextStyles.fakrnitext.copyWith(fontSize: 20),
+                      ),
+                      const SizedBox(height: 30),
+                  
+                      Row(
+                        children: [
+                          Expanded(
+                            child: TextformfieldInAuth(
+                              hintText: 'رقم التليفون',
+                              keyboardType: TextInputType.phone,
+                            ),
                           ),
-                        ),
-                        const SizedBox(width: 10),
-                        Image.asset(
-                          Assets.imagesFather,
-                          width: 40,
-                          height: 40,
-                        ),
-                      ],
-                    ),
-
-                    const SizedBox(height: 80),
-                    const ButtonForNav(),
-                  ],
+                          const SizedBox(width: 10),
+                          Image.asset(
+                            Assets.imagesFather,
+                            width: 40,
+                            height: 40,
+                          ),
+                        ],
+                      ),
+                  
+                      const SizedBox(height: 80),
+                      const ButtonForNav(),
+                    ],
+                  ),
                 ),
               ),
             ),
