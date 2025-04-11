@@ -107,7 +107,6 @@ class SignupParentViewBody extends StatelessWidget {
                           ),
                         ],
                       ),
-
                       const SizedBox(height: 80),
                       BlocConsumer<AuthinticationCubit, AuthinticationState>(
                         listener: (context, state) {
@@ -115,7 +114,7 @@ class SignupParentViewBody extends StatelessWidget {
                             print('Code sent: ${state.verificationId}');
                          }
                          if (state is AuthCodeSent) {
-                            GoRouter.of(context).push(AppRoutes.verifyPhone);
+                            GoRouter.of(context).push(AppRoutes.parenthome);
                          }
                         },
                         builder: (context, state) {
