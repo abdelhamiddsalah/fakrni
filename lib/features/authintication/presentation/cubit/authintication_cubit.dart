@@ -79,8 +79,8 @@ final TextEditingController fatherNameController = TextEditingController();
   }
 }
 
-Future<void> saveChildData(ChildEntity childentity) async{
-   await childSavedataUsecase.authRepository.saveChhildData(childentity);
+Future<void> saveChildData(ChildEntity childentity, String parentId) async{
+   await childSavedataUsecase.authRepository.saveChhildData(childentity, parentId);
 }
 
 }

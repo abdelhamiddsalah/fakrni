@@ -5,5 +5,5 @@ class ChildSavedataUsecase {
   final AuthRepository authRepository;
 
   ChildSavedataUsecase({required this.authRepository});
-  Future<void> call(ChildEntity child) => authRepository.saveChhildData(child);
+  Future<void> call(ChildEntity child, String parentId) => authRepository.saveChhildData(child,parentId );
 }

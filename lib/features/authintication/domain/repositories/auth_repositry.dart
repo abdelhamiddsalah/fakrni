@@ -15,5 +15,5 @@ abstract class AuthRepository {
 
   Future<UserEntity> signInWithCredential(PhoneAuthCredential credential);
   Future<void> saveUserData(UserEntity user);
-  Future<void> saveChhildData(ChildEntity childEntity);
+  Future<void> saveChhildData(ChildEntity childEntity, String parentId);
 }

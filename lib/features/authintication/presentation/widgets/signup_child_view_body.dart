@@ -6,6 +6,7 @@ import 'package:fakrni/core/widgets/textformfield_in_auth.dart';
 import 'package:fakrni/features/authintication/domain/entities/child_entity.dart';
 import 'package:fakrni/features/authintication/presentation/cubit/authintication_cubit.dart';
 import 'package:fakrni/features/authintication/presentation/widgets/arrow_back.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -153,7 +154,7 @@ class _SignupChildViewBodyState extends State<SignupChildViewBody> {
       age: int.tryParse(selectedAge ?? '0') ?? 0, id: '${DateTime.now().millisecondsSinceEpoch}',
     );
 
-    context.read<AuthinticationCubit>().saveChildData(child);
+    context.read<AuthinticationCubit>().saveChildData(child,FirebaseAuth.instance.currentUser!.uid);
   } else {
     // ممكن تعرض رسالة خطأ
     ScaffoldMessenger.of(context).showSnackBar(

@@ -43,7 +43,7 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<void> saveChhildData(ChildEntity childEntity) {
-    return storeRemoteDataSource.saveChildData(childEntity);
+  Future<void> saveChhildData(ChildEntity childEntity, String parentId) {
+    return storeRemoteDataSource.saveChildData(childEntity, parentId);
   }
 }

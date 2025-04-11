@@ -5,7 +5,7 @@ import 'package:fakrni/features/authintication/domain/entities/user_entity.dart'
 
 abstract class FirestoreRemoteDataSource {
   Future<void> saveParentData(UserEntity user);
-  Future<void> saveChildData(ChildEntity childEntity);
+  Future<void> saveChildData(ChildEntity childEntity, String parentId);
 }
 
 class FirestoreRemoteDataSourceImpl implements FirestoreRemoteDataSource {
@@ -23,11 +23,12 @@ class FirestoreRemoteDataSourceImpl implements FirestoreRemoteDataSource {
   }
   
   @override
-  Future<void> saveChildData(ChildEntity childEntity) async{
-    await firestore.collection('parents').doc().collection('childrens').doc(childEntity.id).set({
+  Future<void> saveChildData(ChildEntity childEntity, String parentId) async{
+    await firestore.collection('parents').doc(parentId).collection('childrens').doc(childEntity.id).set({
      'id':childEntity.id,
      'firstname':childEntity.firstname,
-     'lastname':childEntity.lastname
+     'lastname':childEntity.lastname,
+     'age':childEntity.age
     });
   }
 }
