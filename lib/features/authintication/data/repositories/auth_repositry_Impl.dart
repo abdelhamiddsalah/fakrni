@@ -1,4 +1,6 @@
 import 'package:fakrni/features/authintication/data/datasources/auth_remotedatasource.dart';
+import 'package:fakrni/features/authintication/data/datasources/store_datasource_parent.dart';
+import 'package:fakrni/features/authintication/domain/entities/child_entity.dart';
 import 'package:fakrni/features/authintication/domain/repositories/auth_repositry.dart';
 import 'package:fakrni/indepency_injection.dart';
 
@@ -7,6 +9,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
   final AuthRemoteDataSource remoteDataSource =getIt<AuthRemoteDataSource>() ;
+  final FirestoreRemoteDataSource storeRemoteDataSource =getIt<FirestoreRemoteDataSource>() ;
 
   AuthRepositoryImpl();
 
@@ -32,5 +35,15 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<UserEntity> signInWithCredential(PhoneAuthCredential credential) {
     return remoteDataSource.signInWithCredential(credential);
+  }
+  
+  @override
+  Future<void> saveUserData(UserEntity user) {
+    return storeRemoteDataSource.saveParentData(user);
+  }
+
+  @override
+  Future<void> saveChhildData(ChildEntity childEntity) {
+    return storeRemoteDataSource.saveChildData(childEntity);
   }
 }

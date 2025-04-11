@@ -3,8 +3,11 @@ import 'package:fakrni/core/styles/app_colors.dart';
 import 'package:fakrni/core/styles/text_styles.dart';
 import 'package:fakrni/core/widgets/button_for_nav.dart';
 import 'package:fakrni/core/widgets/textformfield_in_auth.dart';
+import 'package:fakrni/features/authintication/domain/entities/child_entity.dart';
+import 'package:fakrni/features/authintication/presentation/cubit/authintication_cubit.dart';
 import 'package:fakrni/features/authintication/presentation/widgets/arrow_back.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SignupChildViewBody extends StatefulWidget {
   const SignupChildViewBody({super.key});
@@ -15,7 +18,6 @@ class SignupChildViewBody extends StatefulWidget {
 
 class _SignupChildViewBodyState extends State<SignupChildViewBody> {
   String? selectedAge;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -90,9 +92,9 @@ class _SignupChildViewBodyState extends State<SignupChildViewBody> {
                         style: TextStyles.fakrnitext.copyWith(fontSize: 20),
                       ),
                       const SizedBox(height: 30),
-                      const TextformfieldInAuth(hintText: 'اسمك'),
+                       TextformfieldInAuth(hintText: 'اسمك',controller: context.read<AuthinticationCubit>().nameController,),
                       const SizedBox(height: 20),
-                      const TextformfieldInAuth(hintText: 'اسم الاب'),
+                       TextformfieldInAuth(hintText: 'اسم الاب',controller: context.read<AuthinticationCubit>().fatherNameController,),
                       const SizedBox(height: 20),
                   
                      Padding(
@@ -138,7 +140,29 @@ class _SignupChildViewBodyState extends State<SignupChildViewBody> {
 
                   
                       const SizedBox(height: 50),
-                      const ButtonForNav(),
+                       ButtonForNav(
+
+                      onTap: () {
+  final name = context.read<AuthinticationCubit>().nameController.text.trim();
+  final fatherName = context.read<AuthinticationCubit>().fatherNameController.text.trim();
+
+  if (name.isNotEmpty && fatherName.isNotEmpty && selectedAge != null) {
+    final child = ChildEntity(
+      firstname: name,
+      lastname: fatherName,
+      age: int.tryParse(selectedAge ?? '0') ?? 0, id: '${DateTime.now().millisecondsSinceEpoch}',
+    );
+
+    context.read<AuthinticationCubit>().saveChildData(child);
+  } else {
+    // ممكن تعرض رسالة خطأ
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('من فضلك املأ جميع الحقول')),
+    );
+  }
+},
+
+                      ),
                     ],
                   ),
                 ),

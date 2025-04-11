@@ -1,3 +1,5 @@
+import 'package:fakrni/features/authintication/domain/entities/child_entity.dart';
+
 import '../entities/user_entity.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -12,4 +14,6 @@ abstract class AuthRepository {
   });
 
   Future<UserEntity> signInWithCredential(PhoneAuthCredential credential);
+  Future<void> saveUserData(UserEntity user);
+  Future<void> saveChhildData(ChildEntity childEntity);
 }
