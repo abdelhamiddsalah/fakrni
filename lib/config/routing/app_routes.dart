@@ -4,4 +4,5 @@ class AppRoutes {
   static const String usertype = '/usertype';
   static const String signupchild = '/signupchild';
   static const String signupparent = '/signupparent';
+  static const String verifyPhone = '/verifyPhone';
 }

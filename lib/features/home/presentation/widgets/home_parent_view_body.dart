@@ -1,3 +1,4 @@
+import 'package:fakrni/core/styles/text_styles.dart';
 import 'package:flutter/material.dart';
 
 class HomeParentViewBody extends StatelessWidget {
@@ -14,7 +15,12 @@ class HomeParentViewBody extends StatelessWidget {
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 20),
-          
+           Center(
+            child: Text('لم يوجد أطفال مسجلين بعد',
+                style:TextStyles.fakrnitext.copyWith(
+                  fontSize: 20,
+                )),
+           ),
         ],
       )),
     );

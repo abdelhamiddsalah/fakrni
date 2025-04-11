@@ -3,13 +3,15 @@ import 'package:fakrni/core/styles/text_styles.dart';
 import 'package:flutter/material.dart';
 
 class TextformfieldInAuth extends StatelessWidget {
-  const TextformfieldInAuth({super.key, this.hintText, this.keyboardType});
+  const TextformfieldInAuth({super.key, this.hintText, this.keyboardType, this.controller});
   final String? hintText;
   final TextInputType? keyboardType;
+  final TextEditingController? controller;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       keyboardType: keyboardType,
+      controller: controller,
       decoration: InputDecoration(
         filled: true,
         fillColor: AppColors.mainColor,

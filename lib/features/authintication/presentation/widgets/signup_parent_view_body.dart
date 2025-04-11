@@ -1,10 +1,14 @@
+import 'package:fakrni/config/routing/app_routes.dart';
 import 'package:fakrni/constants/images.dart';
 import 'package:fakrni/core/styles/app_colors.dart';
 import 'package:fakrni/core/styles/text_styles.dart';
 import 'package:fakrni/core/widgets/button_for_nav.dart';
 import 'package:fakrni/core/widgets/textformfield_in_auth.dart';
+import 'package:fakrni/features/authintication/presentation/cubit/authintication_cubit.dart';
 import 'package:fakrni/features/authintication/presentation/widgets/arrow_back.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class SignupParentViewBody extends StatelessWidget {
   const SignupParentViewBody({super.key});
@@ -47,7 +51,9 @@ class SignupParentViewBody extends StatelessWidget {
                       left: -30,
                       child: CircleAvatar(
                         radius: 30,
-                        backgroundColor: Colors.tealAccent.shade100.withOpacity(0.5),
+                        backgroundColor: Colors.tealAccent.shade100.withOpacity(
+                          0.5,
+                        ),
                       ),
                     ),
                     Positioned(
@@ -84,13 +90,13 @@ class SignupParentViewBody extends StatelessWidget {
                         style: TextStyles.fakrnitext.copyWith(fontSize: 20),
                       ),
                       const SizedBox(height: 30),
-                  
                       Row(
                         children: [
                           Expanded(
                             child: TextformfieldInAuth(
                               hintText: 'رقم التليفون',
                               keyboardType: TextInputType.phone,
+                              controller: context.read<AuthinticationCubit>().phoneNumberController,
                             ),
                           ),
                           const SizedBox(width: 10),
@@ -101,9 +107,24 @@ class SignupParentViewBody extends StatelessWidget {
                           ),
                         ],
                       ),
-                  
+
                       const SizedBox(height: 80),
-                      const ButtonForNav(),
+                      BlocConsumer<AuthinticationCubit, AuthinticationState>(
+                        listener: (context, state) {
+                         if (state is AuthCodeSent) {
+                            print('Code sent: ${state.verificationId}');
+                         }
+                         if (state is AuthCodeSent) {
+                            GoRouter.of(context).push(AppRoutes.verifyPhone);
+                         }
+                        },
+                        builder: (context, state) {
+                          return ButtonForNav(onTap: () {
+                            context.read<AuthinticationCubit>().verifyPhone(phoneNumber: context.read<AuthinticationCubit>().phoneNumberController.text );
+                  
+                          });
+                        },
+                      ),
                     ],
                   ),
                 ),

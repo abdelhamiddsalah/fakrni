@@ -1,14 +1,17 @@
 import 'package:fakrni/config/routing/app_routing.dart';
 import 'package:fakrni/firebase_options.dart';
+import 'package:fakrni/indepency_injection.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
 );
+initGetIt();
   runApp(const MyApp());
 }
 
