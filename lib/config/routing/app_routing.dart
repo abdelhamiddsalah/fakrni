@@ -3,6 +3,7 @@ import 'package:fakrni/features/authintication/presentation/screens/signup_child
 import 'package:fakrni/features/authintication/presentation/screens/signup_parent_view.dart';
 import 'package:fakrni/features/authintication/presentation/screens/usertype_view.dart';
 import 'package:fakrni/features/authintication/presentation/screens/verifyphone_view.dart';
+import 'package:fakrni/features/home/presentation/screens/chiled_home_details_view.dart';
 import 'package:fakrni/features/home/presentation/screens/home_child_view.dart';
 import 'package:fakrni/features/home/presentation/screens/home_parent_view.dart';
 import 'package:fakrni/features/onboarding/presentation/screens/onboarding_view.dart';
@@ -19,6 +20,7 @@ class AppRouting {
          GoRoute(path: AppRoutes.verifyPhone, builder: (context, state) => const VerifyphoneView()),
          GoRoute(path: AppRoutes.parenthome, builder: (context, state) => const HomeParentView()),
          GoRoute(path: AppRoutes.childhome, builder: (context, state) => const HomeChildView()),
+         GoRoute(path: AppRoutes.childhomedetails, builder: (context, state) => const ChiledHomeDetailsView()),
       ],
    );
 }

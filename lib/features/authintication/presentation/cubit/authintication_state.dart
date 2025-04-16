@@ -43,3 +43,4 @@ class AuthLoggedIn extends AuthinticationState {
   @override
   List<Object> get props => [user];
 }
+class ChildDataSaved extends AuthinticationState {}

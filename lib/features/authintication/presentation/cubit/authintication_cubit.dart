@@ -79,9 +79,16 @@ final TextEditingController fatherNameController = TextEditingController();
   }
 }
 
-Future<void> saveChildData(ChildEntity childentity, String parentId) async{
-   await childSavedataUsecase.authRepository.saveChhildData(childentity, parentId);
+Future<void> saveChildData(ChildEntity childentity, String parentId) async {
+  try {
+    emit(AuthLoading());
+    await childSavedataUsecase.authRepository.saveChhildData(childentity, parentId);
+    emit(ChildDataSaved()); // ✅ حالة جديدة لما يتم الحفظ بنجاح
+  } catch (e) {
+    emit(AuthError('فشل حفظ بيانات الطفل: $e'));
+  }
 }
+
 
 }
 

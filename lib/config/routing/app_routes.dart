@@ -7,4 +7,5 @@ class AppRoutes {
   static const String verifyPhone = '/verifyPhone';
   static const String parenthome = '/parenthome';
   static const String childhome = '/childhome';
+  static const String childhomedetails = '/childhomedetails';
 }
