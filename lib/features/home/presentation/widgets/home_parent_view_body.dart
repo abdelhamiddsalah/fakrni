@@ -44,7 +44,6 @@ class HomeParentViewBody extends StatelessWidget {
 }*/
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:fakrni/core/styles/app_colors.dart';
@@ -56,7 +55,7 @@ class HomeParentViewBody extends StatelessWidget {
   const HomeParentViewBody({super.key});
 
   Future<List<Map<String, dynamic>>> fetchChildren() async {
-    final parentId = FirebaseAuth.instance.currentUser!.uid;
+    final parentId = 'N45T18tKyRbmIuIHnhPNxmEziEW2';
     final snapshot = await FirebaseFirestore.instance
         .collection('parents')
         .doc(parentId)

@@ -1,9 +1,11 @@
+import 'package:fakrni/config/routing/app_routes.dart';
 import 'package:fakrni/constants/images.dart';
 import 'package:fakrni/core/styles/app_colors.dart';
 import 'package:fakrni/core/styles/text_styles.dart';
 import 'package:fakrni/features/home/presentation/cubit/challenges/cubit/challenges_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class HomeChildViewBody extends StatelessWidget {
   const HomeChildViewBody({super.key});
@@ -55,43 +57,48 @@ class HomeChildViewBody extends StatelessWidget {
                       itemBuilder: (context, index) {
                         return Padding(
                           padding: const EdgeInsets.only(bottom: 20),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: AppColors.secondColor,
-                              borderRadius: BorderRadius.circular(20),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black26,
-                                  blurRadius: 10,
-                                  offset: Offset(0, 2),
-                                ),
-                              ],
-                            ),
-                            child: ListTile(
-                              leading: CircleAvatar(
-                                backgroundColor: AppColors.secondColor,
-                                child: Text('${index + 1}'),
+                          child: GestureDetector(
+                            onTap: (){
+                              GoRouter.of(context).push(AppRoutes.childhomedetails,extra: state.challenges[index]);
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: AppColors.secondColor,
+                                borderRadius: BorderRadius.circular(20),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black26,
+                                    blurRadius: 10,
+                                    offset: Offset(0, 2),
+                                  ),
+                                ],
                               ),
-                              title: Text(
-                                state.challenges[index].challengename,
-                                style: TextStyles.fakrnitext.copyWith(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
+                              child: ListTile(
+                                leading: CircleAvatar(
+                                  backgroundColor: AppColors.secondColor,
+                                  child: Text('${index + 1}'),
                                 ),
-                              ),
-                              subtitle: Text(
-                                'اضغط لعمل مهمة ${index + 1}',
-                                style: TextStyles.fakrnitext.copyWith(
-                                  fontSize: 14,
-                                  color: AppColors.textColor.withOpacity(0.7),
+                                title: Text(
+                                  state.challenges[index].challengename,
+                                  style: TextStyles.fakrnitext.copyWith(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
-                              ),
-                              trailing: CircleAvatar(
-                                child: Image.network(
-                                  state.challenges[index].image,
-                                  width: 30,
-                                  height: 30,
-                                  fit: BoxFit.fill,
+                                subtitle: Text(
+                                  'اضغط لعمل مهمة ${index + 1}',
+                                  style: TextStyles.fakrnitext.copyWith(
+                                    fontSize: 14,
+                                    color: AppColors.textColor.withOpacity(0.7),
+                                  ),
+                                ),
+                                trailing: CircleAvatar(
+                                  child: Image.network(
+                                    state.challenges[index].image,
+                                    width: 30,
+                                    height: 30,
+                                    fit: BoxFit.fill,
+                                  ),
                                 ),
                               ),
                             ),
