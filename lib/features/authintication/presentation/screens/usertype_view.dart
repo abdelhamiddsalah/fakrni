@@ -6,6 +6,6 @@ class UsertypeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return UsertypeViewBody();
+    return const UsertypeViewBody();
   }
 }

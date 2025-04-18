@@ -14,7 +14,7 @@ class ArrowBack extends StatelessWidget {
                     onTap: () {
                       GoRouter.of(context).pop();
                     },
-                    child: Icon(
+                    child: const Icon(
                       Icons.arrow_forward_ios,
                       color: AppColors.textColor,
                     ),

@@ -24,7 +24,7 @@ class VerifyphoneView extends StatelessWidget {
       );
     }
         },
-        child: VerifyphoneViewBody(),
+        child: const VerifyphoneViewBody(),
       ),
     );
   }

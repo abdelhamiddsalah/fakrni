@@ -1,12 +1,12 @@
-import 'package:fakrni/config/routing/app_routes.dart';
 import 'package:fakrni/constants/images.dart';
+import 'package:fakrni/core/enums/enums.dart';
 import 'package:fakrni/core/styles/app_colors.dart';
 import 'package:fakrni/core/styles/text_styles.dart';
-import 'package:fakrni/core/widgets/button_for_nav.dart';
+import 'package:fakrni/core/widgets/star_image.dart';
+import 'package:fakrni/features/authintication/presentation/widgets/button_in_usertype.dart';
+import 'package:fakrni/features/authintication/presentation/widgets/user_type_option.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-
-enum UserType { parent, student }
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class UsertypeViewBody extends StatefulWidget {
   const UsertypeViewBody({super.key});
@@ -33,143 +33,34 @@ class _UsertypeViewBodyState extends State<UsertypeViewBody> {
           padding: const EdgeInsets.all(24.0),
           child: Column(
             children: [
-              const SizedBox(height: 40),
-
-              Image.asset(
-                Assets.imagesImageInonboarding,
-                width: 100,
-                height: 100,
-              ),
-
-              const SizedBox(height: 20),
-
+              SizedBox(height: 40.h),
+              const StarImage(),
+              SizedBox(height: 20.h),
               Text(
                 'اختر من أنت ؟',
-                style: TextStyles.fakrnitext.copyWith(fontSize: 24),
+                style: TextStyles.fakrnitext.copyWith(fontSize: 24.sp),
               ),
-
-              const SizedBox(height: 30),
-
-              /// Parent
-              AnimatedContainer(
-                duration: const Duration(milliseconds: 200),
-                decoration: BoxDecoration(
-                  color: selectedType == UserType.parent
-                      ? AppColors.mainColor.withOpacity(0.2)
-                      : AppColors.textColor,
-                  borderRadius: BorderRadius.circular(12),
-                  border: Border.all(
-                    color: selectedType == UserType.parent
-                        ? AppColors.mainColor
-                        : Colors.transparent,
-                    width: 2,
-                  ),
-                ),
-                child: ListTile(
-                  leading: Image.asset(Assets.imagesFather, width: 40, height: 40),
-                  title: Text(
-                    'ولي أمر',
-                    style: TextStyles.fakrnitext.copyWith(
-                      color: selectedType == UserType.parent
-                          ? AppColors.textColor
-                          : AppColors.mainColor,
-                      fontSize: 16,
-                    ),
-                  ),
-                  subtitle: Text(
-                    'للمتابعة والإشراف على الأطفال',
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: selectedType == UserType.parent
-                          ? AppColors.textColor
-                          : AppColors.mainColor,
-                    ),
-                  ),
-                  trailing: Radio<UserType>(
-                    value: UserType.parent,
-                    groupValue: selectedType,
-                    onChanged: (_) => selectType(UserType.parent),
-                    fillColor: MaterialStateProperty.resolveWith<Color>((states) {
-                      if (states.contains(MaterialState.selected)) {
-                        return AppColors.textColor;
-                      }
-                      return AppColors.mainColor;
-                    }),
-                  ),
-                  onTap: () => selectType(UserType.parent),
-                ),
+               SizedBox(height: 30.h),
+              UserTypeOption(
+                type: UserType.parent,
+                selectedType: selectedType,
+                onSelect: selectType,
+                title: 'ولي أمر',
+                subtitle: 'للمتابعة والإشراف على الأطفال',
+                imagePath: Assets.imagesFather,
               ),
-
-              const SizedBox(height: 20),
-
-              /// Student
-              AnimatedContainer(
-                duration: const Duration(milliseconds: 200),
-                decoration: BoxDecoration(
-                  color: selectedType == UserType.student
-                      ? AppColors.mainColor.withOpacity(0.2)
-                      : AppColors.textColor,
-                  borderRadius: BorderRadius.circular(12),
-                  border: Border.all(
-                    color: selectedType == UserType.student
-                        ? AppColors.mainColor
-                        : Colors.transparent,
-                    width: 2,
-                  ),
-                ),
-                child: ListTile(
-                  leading: Image.asset(Assets.imagesBoy, width: 40, height: 40),
-                  title: Text(
-                    'طفل',
-                    style: TextStyles.fakrnitext.copyWith(
-                      color: selectedType == UserType.student
-                          ? AppColors.textColor
-                          : AppColors.mainColor,
-                      fontSize: 16,
-                    ),
-                  ),
-                  subtitle: Text(
-                    'للدخول إلى الأنشطة والتحديات',
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: selectedType == UserType.student
-                          ? AppColors.textColor
-                          : AppColors.mainColor,
-                    ),
-                  ),
-                  trailing: Radio<UserType>(
-                    value: UserType.student,
-                    groupValue: selectedType,
-                    onChanged: (_) => selectType(UserType.student),
-                    fillColor: MaterialStateProperty.resolveWith<Color>((states) {
-                      if (states.contains(MaterialState.selected)) {
-                        return AppColors.textColor;
-                      }
-                      return AppColors.mainColor;
-                    }),
-                  ),
-                  onTap: () => selectType(UserType.student),
-                ),
+              SizedBox(height: 20.h),
+              UserTypeOption(
+                type: UserType.student,
+                selectedType: selectedType,
+                onSelect: selectType,
+                title: 'طفل',
+                subtitle: 'للدخول إلى الأنشطة والتحديات',
+                imagePath: Assets.imagesBoy,
               ),
-
-              const SizedBox(height: 90),
-
-              Opacity(
-                opacity: selectedType != null ? 1 : 0.5,
-                child: IgnorePointer(
-                  ignoring: selectedType == null,
-                  child:  ButtonForNav(
-                    onTap: () {
-                       GoRouter.of(context).push(
-                        selectedType == UserType.parent
-                            ? AppRoutes.signupparent
-                            : AppRoutes.signupchild,);
-                    },
-                  ),
-                ),
-              ),
-
-              const SizedBox(height: 30),
+              SizedBox(height: 90.h),
+              ButtonInUserType(selectedType: selectedType),
+              SizedBox(height: 30.h),
             ],
           ),
         ),

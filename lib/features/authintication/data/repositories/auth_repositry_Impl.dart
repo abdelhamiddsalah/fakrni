@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:fakrni/features/authintication/data/datasources/auth_remotedatasource.dart';
 import 'package:fakrni/features/authintication/data/datasources/store_datasource_parent.dart';
 import 'package:fakrni/features/authintication/domain/entities/child_entity.dart';

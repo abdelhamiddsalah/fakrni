@@ -49,6 +49,7 @@ import 'package:flutter/material.dart';
 import 'package:fakrni/core/styles/app_colors.dart';
 import 'package:fakrni/core/styles/text_styles.dart';
 import 'package:fakrni/features/authintication/presentation/widgets/arrow_back.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
 
 class HomeParentViewBody extends StatelessWidget {
@@ -85,7 +86,7 @@ class HomeParentViewBody extends StatelessWidget {
                 return Column(
                   children: [
                     const SizedBox(height: 20),
-                    ArrowBack(),
+                    const ArrowBack(),
                     const SizedBox(height: 120),
                     Center(
                       child: Column(
@@ -120,7 +121,7 @@ class HomeParentViewBody extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(height: 20),
-                  ArrowBack(),
+                  const ArrowBack(),
                   const SizedBox(height: 40),
                   Text(
                     'نقاط الأطفال حسب الأنشطة',
@@ -138,7 +139,7 @@ class HomeParentViewBody extends StatelessWidget {
                         return Column(
                           children: [
                             // رسم بياني للطفل
-                            Container(
+                            SizedBox(
                               height: 300, // تحديد الارتفاع
                               child: BarChart(
                                 BarChartData(
@@ -150,13 +151,13 @@ class HomeParentViewBody extends StatelessWidget {
                                           .toDouble() +
                                       10,
                                   titlesData: FlTitlesData(
-                                    leftTitles: AxisTitles(
+                                    leftTitles: const AxisTitles(
                                       sideTitles: SideTitles(showTitles: false),
                                     ),
-                                    rightTitles: AxisTitles(
+                                    rightTitles: const AxisTitles(
                                       sideTitles: SideTitles(showTitles: false),
                                     ),
-                                    topTitles: AxisTitles(
+                                    topTitles: const AxisTitles(
                                       sideTitles: SideTitles(showTitles: false),
                                     ),
                                     bottomTitles: AxisTitles(
@@ -172,7 +173,7 @@ class HomeParentViewBody extends StatelessWidget {
                                       ),
                                     ),
                                   ),
-                                  gridData: FlGridData(show: true),
+                                  gridData: const FlGridData(show: true),
                                   barGroups: [
                                     BarChartGroupData(
                                       x: index,
@@ -190,7 +191,7 @@ class HomeParentViewBody extends StatelessWidget {
                               ),
                             ),
                             // عرض اسم الطفل تحت الرسم البياني
-                            SizedBox(height: 10),
+                            SizedBox(height: 10.h),
                             Text(
                               child['firstname'] ?? '',
                               style: const TextStyle(
@@ -199,7 +200,7 @@ class HomeParentViewBody extends StatelessWidget {
                                 color: Colors.black,
                               ),
                             ),
-                            SizedBox(height: 20), // مساحة إضافية بين العناصر
+                            SizedBox(height: 20.h), // مساحة إضافية بين العناصر
                           ],
                         );
                       },

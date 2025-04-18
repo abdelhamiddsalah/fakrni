@@ -11,7 +11,7 @@ class HomeChildView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => getIt<ChallengesCubit>()..getChallenges(),
-      child: HomeChildViewBody(),
+      child: const HomeChildViewBody(),
     );
   }
 }

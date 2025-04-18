@@ -15,7 +15,7 @@ class ExistingchildrenCubit extends Cubit<ExistingchildrenState> {
       if (hasChildren) {
         emit(ExistingchildrenIsExisted());
       } else {
-        emit(ExistingchildrenIsNotExisted(message: 'No children found.'));
+        emit(const ExistingchildrenIsNotExisted(message: 'No children found.'));
       }
     } catch (e) {
       emit(ExistingchildrenIsNotExisted(message: e.toString()));

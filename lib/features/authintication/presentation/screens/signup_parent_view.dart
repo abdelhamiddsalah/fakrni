@@ -11,7 +11,7 @@ class SignupParentView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider.value(
       value: getIt<AuthinticationCubit>(),
-      child: SignupParentViewBody(),
+      child: const SignupParentViewBody(),
     );
   }
 }

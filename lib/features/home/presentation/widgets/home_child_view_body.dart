@@ -65,7 +65,7 @@ class HomeChildViewBody extends StatelessWidget {
                               decoration: BoxDecoration(
                                 color: AppColors.secondColor,
                                 borderRadius: BorderRadius.circular(20),
-                                boxShadow: [
+                                boxShadow: const [
                                   BoxShadow(
                                     color: Colors.black26,
                                     blurRadius: 10,

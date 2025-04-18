@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'dart:async';
 
 import 'package:fakrni/constants/images.dart';
@@ -5,6 +7,7 @@ import 'package:fakrni/core/styles/app_colors.dart';
 import 'package:fakrni/core/styles/text_styles.dart';
 import 'package:fakrni/features/home/data/models/challenge_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 class ChildHomeDetailsViewBody extends StatefulWidget {
@@ -35,7 +38,7 @@ class _ChildHomeDetailsViewBodyState extends State<ChildHomeDetailsViewBody> {
       return;  // Don't start the timer again if it's already running
     }
 
-    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       setState(() {
         if (_start == 0) {
           _timer?.cancel();
@@ -64,14 +67,14 @@ class _ChildHomeDetailsViewBodyState extends State<ChildHomeDetailsViewBody> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text('مبروك!'),
+        title: const Text('مبروك!'),
         content: Text('لقد أكملت التحدي وحصلت على $points نقطة.'),
         actions: <Widget>[
           TextButton(
             onPressed: () {
               Navigator.of(context).pop(); // Close the dialog
             },
-            child: Text('موافق'),
+            child: const Text('موافق'),
           ),
         ],
       ),
@@ -86,14 +89,13 @@ class _ChildHomeDetailsViewBodyState extends State<ChildHomeDetailsViewBody> {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+            padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
             width: double.infinity,
             decoration: BoxDecoration(
               color: AppColors.mainColor,
               borderRadius: BorderRadius.circular(10),
               border: Border.all(
                 color: AppColors.textColor,
-                width: 1,
               ),
             ),
             child: SingleChildScrollView(
@@ -103,26 +105,26 @@ class _ChildHomeDetailsViewBodyState extends State<ChildHomeDetailsViewBody> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text('فكرني', style: TextStyles.fakrnitext.copyWith(fontSize: 20)),
-                      SizedBox(width: 10),
+                      SizedBox(width: 10.w),
                       GestureDetector(
                         onTap: () {
                           GoRouter.of(context).pop(); // Navigate back to previous screen
                         },
-                        child: Icon(Icons.arrow_forward, color: AppColors.textColor),
+                        child: const Icon(Icons.arrow_forward, color: AppColors.textColor),
                       ),
                     ],
                   ),
-                  SizedBox(height: 20),
+                  SizedBox(height: 20.h),
                   Image.asset(
                     Assets.imagesBoy, // Ensure you have this image asset
                     height: 100,
                     width: 100,
                   ),
-                  SizedBox(height: 20),
+                  SizedBox(height: 20.h),
                   Text(widget.challengeModel.challengename, style: TextStyles.fakrnitext.copyWith(fontSize: 20)),
-                  SizedBox(height: 20),
-                  Divider(color: AppColors.textColor, thickness: 1),
-                  SizedBox(height: 20),
+                  SizedBox(height: 20.h),
+                  const Divider(color: AppColors.textColor, thickness: 1),
+                  SizedBox(height: 20.h),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -132,23 +134,23 @@ class _ChildHomeDetailsViewBodyState extends State<ChildHomeDetailsViewBody> {
                       Text('4 - حاول تكسب أكبر عدد من النقاط ', style: TextStyles.fakrnitext.copyWith(fontSize: 15, fontWeight: FontWeight.w600)),
                     ],
                   ),
-                  SizedBox(height: 20),
+                  SizedBox(height: 20.h),
                   LinearProgressIndicator(
                     value: _progress,
                     backgroundColor: Colors.grey[300],
                     color: AppColors.secondColor,
                   ),
-                  SizedBox(height: 20),
+                  SizedBox(height: 20.h),
                   Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
                       color: AppColors.secondColor,
                     ),
-                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                    padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
                     width: 150,
                     child: Text(timerText, style: TextStyles.fakrnitext.copyWith(fontSize: 20)),
                   ),
-                  SizedBox(height: 20),
+                  SizedBox(height: 20.h),
                   InkWell(
                     onTap: () {
                       if (!isStarted) {
@@ -164,13 +166,13 @@ class _ChildHomeDetailsViewBodyState extends State<ChildHomeDetailsViewBody> {
                         borderRadius: BorderRadius.circular(20),
                         color: AppColors.secondColor,
                       ),
-                      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
                       width: 150,
                       height: 70,
                       child: Text(isStarted ? 'التحدي بدأ' : 'أبدا التحدي', style: TextStyles.fakrnitext.copyWith(fontSize: 20)),
                     ),
                   ),
-                  SizedBox(height: 20),
+                  SizedBox(height: 20.h),
                   if (isStarted && !isCompleted)
                     InkWell(
                       onTap: completeTask,
@@ -180,13 +182,13 @@ class _ChildHomeDetailsViewBodyState extends State<ChildHomeDetailsViewBody> {
                           borderRadius: BorderRadius.circular(20),
                           color: AppColors.secondColor,
                         ),
-                        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                        padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
                         width: 150,
                         height: 70,
                         child: Text('أكمل المهمة', style: TextStyles.fakrnitext.copyWith(fontSize: 20)),
                       ),
                     ),
-                  SizedBox(height: 20),
+                  SizedBox(height: 20.h),
                   // If time is up and task is not completed, show "خسر"
                   if (isLost && !isCompleted)
                     InkWell(
@@ -201,7 +203,7 @@ class _ChildHomeDetailsViewBodyState extends State<ChildHomeDetailsViewBody> {
                           borderRadius: BorderRadius.circular(20),
                           color: Colors.red,
                         ),
-                        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                        padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
                         width: 150,
                         height: 70,
                         child: Text('خسر', style: TextStyles.fakrnitext.copyWith(fontSize: 20)),

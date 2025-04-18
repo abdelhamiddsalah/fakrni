@@ -30,7 +30,7 @@ class SignupParentViewBody extends StatelessWidget {
                 child: Stack(
                   alignment: Alignment.bottomLeft,
                   children: [
-                    Positioned(
+                    const Positioned(
                       bottom: -12,
                       left: -12,
                       child: CircleAvatar(
@@ -43,7 +43,7 @@ class SignupParentViewBody extends StatelessWidget {
                       left: 20,
                       child: CircleAvatar(
                         radius: 50,
-                        backgroundColor: Color(0xff4c9bb9).withOpacity(0.5),
+                        backgroundColor: const Color(0xff4c9bb9).withOpacity(0.5),
                       ),
                     ),
                     Positioned(

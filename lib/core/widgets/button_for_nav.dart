@@ -1,5 +1,6 @@
 import 'package:fakrni/core/styles/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ButtonForNav extends StatelessWidget {
   final void Function()? onTap;
@@ -12,11 +13,11 @@ class ButtonForNav extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: 50,
-        height: 50,
+        width: 50.w,
+        height: 50.h,
         decoration: BoxDecoration(
           
-            gradient: LinearGradient(
+            gradient: const LinearGradient(
             colors: [
               AppColors.mainColor,
               AppColors.textColor,

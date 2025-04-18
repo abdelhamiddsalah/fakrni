@@ -39,10 +39,10 @@ class _SignupChildViewBodyState extends State<SignupChildViewBody> {
                 child: Stack(
                   alignment: Alignment.bottomLeft,
                   children: [
-                    Positioned(
+                    const Positioned(
                       bottom: -12,
                       left: -12,
-                      child: CircleAvatar(radius: 40, backgroundColor: const Color(0xfff0a790)),
+                      child: CircleAvatar(radius: 40, backgroundColor: Color(0xfff0a790)),
                     ),
                     Positioned(
                       bottom: -20,

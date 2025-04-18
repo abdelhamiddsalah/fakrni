@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:fakrni/features/home/data/datasources/datasource_remote_Impl.dart';
 import 'package:fakrni/features/home/data/models/challenge_model.dart';
 import 'package:fakrni/features/home/domain/repositories/challenge_repositry.dart';
